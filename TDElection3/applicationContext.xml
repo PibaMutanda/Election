@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	 <context:annotation-config/>       <!-- Activation pour les annotations springs -->
+    <context:component-scan base-package="be"/>   <!-- Spring se charge de scanner tous les packages à partir de be -->
+    
+    <bean id="electionsUI" class="be.ui.ElectionsConsole"></bean>
+    
+    <bean id="electionsMetier" class="be.metier.ElectionsMetierImpl" ></bean>
+    
+    <bean id="electionsDao" class="be.dao.ElectionsDaoImpl">
+    <constructor-arg >
+    <value>data/elections-in-good.txt</value>
+    </constructor-arg>
+    <constructor-arg >
+    <value>data/elections-out.txt</value>
+    </constructor-arg>
+    <constructor-arg >
+    <value>data/elections-log.txt</value>
+    </constructor-arg>
+    </bean>
+</beans>	
